@@ -1,0 +1,37 @@
+# Default config for local dry-runs. Prefer editing a copy of config.example.yaml.
+
+sku:
+  title: "SaaS Pricing Snapshot"
+  niche: "developer tools / productivity SaaS"
+  audience: "founders and product marketers tracking competitor pricing"
+
+fetch:
+  timeout_seconds: 25
+  user_agent: "hustle-research-brief/0.1 (+https://github.com/ArmadilloArmada/hustle-research-brief; research; respectful)"
+  max_bytes: 500000
+
+sources:
+  - name: Notion
+    product: Notion
+    type: pricing_page
+    url: https://www.notion.so/pricing
+  - name: Linear
+    product: Linear
+    type: pricing_page
+    url: https://linear.app/pricing
+  - name: Loom
+    product: Loom
+    type: pricing_page
+    url: https://www.loom.com/pricing
+  - name: Product Hunt Launch Digest
+    product: Product Hunt
+    type: rss
+    url: https://www.producthunt.com/feed
+
+# Offline-safe dry-run by default so CI / first clone always produce out/ artifacts.
+demo: true
+
+output:
+  dir: out
+  csv: data.csv
+  brief: brief.md

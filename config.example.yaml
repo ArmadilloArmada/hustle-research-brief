@@ -1,0 +1,39 @@
+# SaaS pricing snapshot research brief — copy to config.yaml and edit.
+
+sku:
+  title: "SaaS Pricing Snapshot"
+  niche: "developer tools / productivity SaaS"
+  audience: "founders and product marketers tracking competitor pricing"
+
+# HTTP fetch settings (be polite; prefer official pricing pages / RSS)
+fetch:
+  timeout_seconds: 25
+  user_agent: "hustle-research-brief/0.1 (+https://github.com/ArmadilloArmada/hustle-research-brief; research; respectful)"
+  max_bytes: 500000
+
+# Competitor / product sources. Use type: pricing_page | rss
+sources:
+  - name: Notion
+    product: Notion
+    type: pricing_page
+    url: https://www.notion.so/pricing
+  - name: Linear
+    product: Linear
+    type: pricing_page
+    url: https://linear.app/pricing
+  - name: Loom
+    product: Loom
+    type: pricing_page
+    url: https://www.loom.com/pricing
+  - name: Product Hunt Launch Digest
+    product: Product Hunt
+    type: rss
+    url: https://www.producthunt.com/feed
+
+# When true, skip live fetches and use bundled fixture rows (offline dry-run).
+demo: false
+
+output:
+  dir: out
+  csv: data.csv
+  brief: brief.md
