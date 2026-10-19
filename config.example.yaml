@@ -37,3 +37,5 @@ output:
   dir: out
   csv: data.csv
   brief: brief.md
+  # Human upload pack after `python src/cli.py approve` then `export`
+  export_dir: export

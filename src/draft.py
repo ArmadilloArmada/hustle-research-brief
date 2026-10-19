@@ -82,7 +82,8 @@ def _template_brief(config: dict[str, Any], rows: list[dict[str, Any]]) -> str:
         [
             "",
             "Sell this as a **digital download SKU** (CSV + brief). Refresh weekly and "
-            "bump the last-updated date. Gumroad upload is intentionally out of scope for v1.",
+            "bump the last-updated date. Pipeline: approve → export pack → human uploads "
+            "to Gumroad free tier (no API upload).",
             "",
             "## Product notes",
             "",
@@ -113,10 +114,10 @@ def _template_brief(config: dict[str, Any], rows: list[dict[str, Any]]) -> str:
         [
             "## How to use this SKU",
             "",
-            "1. Review `out/data.csv` for structured rows.",
-            "2. Spot-check any price against the live pricing page (selectors drift).",
-            "3. Edit voice in this brief; export PDF optionally for marketplace listing.",
-            "4. List on Gumroad (or similar) manually; refresh weekly.",
+            "1. Review `out/data.csv` and this brief; spot-check prices on live pages.",
+            "2. `python src/cli.py approve --yes` after human QA.",
+            "3. `python src/cli.py export` → pack under `out/export/` (zip or folder).",
+            "4. Upload the zip (or files) in the Gumroad product UI; refresh weekly.",
             "",
             "## Compliance",
             "",
@@ -159,7 +160,7 @@ def _llm_brief(config: dict[str, Any], rows: list[dict[str, Any]]) -> str:
         f"in the niche '{niche}'. Today is {today}. Use ONLY the facts in the rows; "
         "do not invent prices. Include: executive summary, per-product notes, "
         "how to use as a digital download SKU, and a short compliance note. "
-        "No Gumroad upload instructions beyond 'list manually'.\n\nRows:\n"
+        "Mention approve → export → human Gumroad upload (no API).\n\nRows:\n"
         f"{table}"
     )
     resp = client.chat.completions.create(
