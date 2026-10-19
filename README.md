@@ -83,6 +83,10 @@ Edit `config.yaml` (see `config.example.yaml`):
 | `OPENAI_API_KEY` | If set, draft brief via OpenAI; else template |
 | `OPENAI_MODEL` | Model id (default `gpt-4o-mini`) |
 
+## Weekly schedule (GitHub Actions)
+
+Every Monday at **14:15 UTC**, [`.github/workflows/weekly-research-brief.yml`](.github/workflows/weekly-research-brief.yml) runs a **draft-only** pipeline (`python src/cli.py --demo`) and uploads artifact **`research-brief-draft`** (no approve/export/upload). Download from the Actions run → **Artifacts**, unzip into `out/`, then approve + export locally.
+
 ## Compliance
 
 - Prefer official public pricing pages and RSS only.
